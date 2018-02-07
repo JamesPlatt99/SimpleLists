@@ -49,18 +49,41 @@ namespace SimpleLists.Lists
             }
         }
 
-        public String[] GetNextNodes(String value)
+        public void Remove(Node value)
         {
-            Node node = FindNode(value);
-            return node.GetNextNodeValues(true);
+            if (value == _startNode)
+            {
+                _startNode = _startNode.NextNode;
+                Remove(value);
+                return;
+            }
+
+            Node curNode = _startNode;
+            while (curNode != null)
+            {
+                if (curNode.NextNode == value)
+                {
+                    curNode.NextNode = curNode.NextNode.NextNode;
+                }
+                else
+                {
+                    curNode = curNode.NextNode;
+                }
+            }
         }
 
-        public string Find(String value)
+        public Node[] GetNextNodes(String value)
+        {
+            Node node = FindNode(value);
+            return node.GetNextNodes(true);
+        }
+
+        public Node Find(String value)
         {
             Node curNode = _startNode;
             while (curNode != null)
             {
-                if(curNode.Value == value) { return curNode.Value; }
+                if(curNode.Value == value) { return curNode; }
                 curNode = curNode.NextNode;
             }
             return null;
@@ -77,9 +100,19 @@ namespace SimpleLists.Lists
             return null;
         }
 
-        public string[] Values()
+        public Node[] Nodes()
         {
-            return _startNode?.GetNextNodeValues() ?? new string[] { };
+            return _startNode?.GetNextNodes() ?? new Node[] { };
+        }
+        public String[] Values()
+        {
+            Node[] values = Nodes();
+            String[] output = new String[values.Length];
+            for(int i = 0; i < values.Length; i++)
+            {
+                output[i] = values[i].ToString();
+            }
+            return output;
         }
     }
 }

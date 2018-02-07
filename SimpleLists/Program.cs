@@ -6,12 +6,12 @@ namespace SimpleLists
     {
         static void Main(string[] args)
         {
-            var list = new SimpleLists.Lists.SinglyLinkedList();
+            var list = new SimpleLists.Lists.ArrayList();
             list.Add("wilma");
             list.Add("fred");
             list.Add("pete");
             list.Add("john");
-            var a = list.Values();
+            var b = list.Nodes();
             Console.ReadLine();
         }
     }

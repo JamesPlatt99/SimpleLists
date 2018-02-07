@@ -19,7 +19,7 @@ namespace SimpleLists.Lists
                 _startNode = node;
             }
         }
-        public String[] GetPreviousNodes(String value)
+        public Node[] GetPreviousNodes(String value)
         {
             Node node = FindNode(value);
             return node.GetPreviousNodeValues(true);

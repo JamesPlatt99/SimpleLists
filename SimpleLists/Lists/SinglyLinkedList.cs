@@ -56,7 +56,7 @@ namespace SimpleLists.Lists
 
         public Node[] GetNextNodes(String value)
         {
-            Node node = FindNode(value);
+            Node node = Find(value);
             return node.GetNextNodes(true);
         }
 
@@ -66,17 +66,6 @@ namespace SimpleLists.Lists
             while (curNode != null)
             {
                 if(curNode.Value == value) { return curNode; }
-                curNode = curNode.NextNode;
-            }
-            return null;
-        }
-
-        protected Node FindNode(String value)
-        {
-            Node curNode = _startNode;
-            while (curNode != null)
-            {
-                if (curNode.Value == value) { return curNode; }
                 curNode = curNode.NextNode;
             }
             return null;

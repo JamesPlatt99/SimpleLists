@@ -44,7 +44,7 @@ namespace SimpleLists.Lists
 
         public Node[] GetPreviousNodes(String value)
         {
-            Node node = FindNode(value);
+            Node node = Find(value);
             return node.GetPreviousNodeValues(true);
         }
     }

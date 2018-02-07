@@ -28,8 +28,14 @@ namespace SimpleLists.Lists
 
         public override void Remove(Node value)
         {
-            value.PreviousNode.NextNode = value.NextNode;
-            value.NextNode.PreviousNode = value.PreviousNode;
+            if (value.PreviousNode != null)
+            {
+                value.PreviousNode.NextNode = value.NextNode;
+            }
+            if (value.NextNode != null)
+            {
+                value.NextNode.PreviousNode = value.PreviousNode;
+            }
         }
 
         public Node[] GetPreviousNodes(String value)

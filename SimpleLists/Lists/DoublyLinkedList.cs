@@ -28,6 +28,10 @@ namespace SimpleLists.Lists
 
         public override void Remove(Node value)
         {
+            if(value.Equals(_startNode))
+            {
+                _startNode = _startNode.NextNode;
+            }
             if (value.PreviousNode != null)
             {
                 value.PreviousNode.NextNode = value.NextNode;

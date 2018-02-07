@@ -26,7 +26,7 @@ namespace SimpleLists.Lists
             }
         }
 
-        public void Remove(string value)
+        public virtual void Remove(string value)
         {
             if (value == _startNode?.Value)
             {
@@ -49,27 +49,9 @@ namespace SimpleLists.Lists
             }
         }
 
-        public void Remove(Node value)
+        public virtual void Remove(Node value)
         {
-            if (value == _startNode)
-            {
-                _startNode = _startNode.NextNode;
-                Remove(value);
-                return;
-            }
-
-            Node curNode = _startNode;
-            while (curNode != null)
-            {
-                if (curNode.NextNode == value)
-                {
-                    curNode.NextNode = curNode.NextNode.NextNode;
-                }
-                else
-                {
-                    curNode = curNode.NextNode;
-                }
-            }
+            Remove(value.Value);
         }
 
         public Node[] GetNextNodes(String value)

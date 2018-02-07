@@ -19,6 +19,19 @@ namespace SimpleLists.Lists
                 _startNode = node;
             }
         }
+
+        public override void Remove(string value)
+        {
+            Node node = Find(value);
+            Remove(node);
+        }
+
+        public override void Remove(Node value)
+        {
+            value.PreviousNode.NextNode = value.NextNode;
+            value.NextNode.PreviousNode = value.PreviousNode;
+        }
+
         public Node[] GetPreviousNodes(String value)
         {
             Node node = FindNode(value);

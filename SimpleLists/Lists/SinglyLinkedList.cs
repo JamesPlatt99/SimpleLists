@@ -6,14 +6,14 @@ namespace SimpleLists.Lists
 {
     public class SinglyLinkedList : IList
     {
-        private Node _startNode;
+        protected Node _startNode;
 
         public SinglyLinkedList(Node start = null)
         {
             _startNode = start;
         }
 
-        public void Add(String value)
+        public virtual void Add(String value)
         {
             Node node = new Node(value);
             if (_startNode != null)
@@ -48,7 +48,13 @@ namespace SimpleLists.Lists
                 }
             }
         }
-        
+
+        public String[] GetNextNodes(String value)
+        {
+            Node node = FindNode(value);
+            return node.GetNextNodeValues(true);
+        }
+
         public string Find(String value)
         {
             Node curNode = _startNode;
@@ -60,7 +66,7 @@ namespace SimpleLists.Lists
             return null;
         }
 
-        private Node FindNode(String value)
+        protected Node FindNode(String value)
         {
             Node curNode = _startNode;
             while (curNode != null)
